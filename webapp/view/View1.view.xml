@@ -1,0 +1,126 @@
+<mvc:View controllerName="ZmasterDetailed.ZmasterDetailed.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange="onOrientationChange">
+		<detailPages>
+			<Page id="detail" title="For Manager" class="sapUiStdPage">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+							labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+							singleContainerFullSize="false">
+							<f:content>
+								<Label text="RequestNo"/>
+								<Text id="Reqno"/>
+								<Label text="PlantName"/>
+								<Text id="plantname"/>
+								<Label text="Workcenter"/>
+								<Text id="wrkcntr1"/>
+								<Label text="Priority"/>
+								<Text id="priority1"/>
+								<Label text="Date"/>
+								<Text id="date1"/>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+					<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter icon="sap-icon://hint">
+								<f:SimpleForm id="SimpleForm2" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+									adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<f:content>
+										<Label text="Request Reason"/>
+										<Text id="reqrsn1"/>
+										<Label text="AssignTo"/>
+										<Text id="assignto1"/>
+									</f:content>
+								</f:SimpleForm>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://notes">
+								<f:SimpleForm id="SimpleForm1" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+									adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<f:content>
+										<Label text="Workcenter Name"/>
+										<Text id="wrkcentr1"/>
+										<Label text="Machine Name"/>
+										<Text id="machinename1"/>
+									</f:content>
+								</f:SimpleForm>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+					<Table id="tblmaster" inset="false" visible="true" class="sapUiResponsiveMargin" growing="true" growingScrollToLoad="true" width="auto"
+						growingThreshold="10" noDataText="{i18n>nodatafound}">
+						<headerToolbar>
+							<OverflowToolbar>
+								<content>
+									<Title text="Task List" level="H2"/>
+									<ToolbarSpacer/>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column demandPopin="true">
+								<Text text="Type"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="Description"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text=""/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle">
+								<cells>
+									<ComboBox id="type1" selectedKey="0">
+										<items>
+												<core:Item text="Select" key="0"/>
+											<core:Item text="Regular" key="regular1"/>
+											<core:Item text="Error" key="error1"/>
+											<core:Item text="Maintanace" key="maint1"/>
+										</items>
+									</ComboBox>
+									<TextArea id="desc"></TextArea>
+									<Text text="Pending" id="text1"/>
+									<Button id="btnCancel" icon="sap-icon://accept" press="onPress" tooltip="Clickhere"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Save">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="master" title="MaintanaceRequest" class="sapUiStdPage">
+			
+			
+				<subHeader>
+					<Toolbar>
+						<SearchField id="idSearchSo" liveChange="handleSOSearch"></SearchField>
+							<Button id="btnfilter" icon="sap-icon://add-filter" press="Onfilter" tooltip="Clickhere"/>
+					</Toolbar>
+				</subHeader>
+				<content>
+					<List items="{/Maintanance}" id="list123">
+						<items>
+							<StandardListItem title="{RequestNo}" info="{Priority}" description="{Workcenter}" type="Navigation" press="onListItemPress"/>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>
